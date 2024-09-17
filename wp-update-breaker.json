@@ -1,0 +1,11 @@
+{
+    "name": "WP Update Breaker",
+    "slug": "wp-update-breaker",
+    "version": "1.1",
+    "author": "kinosuke01",
+    "download_link": "https://kinosuke01.github.io/wp-update-breaker/wp-update-breaker.1.1.zip",
+    "versions": {
+        "1.0": "https://kinosuke01.github.io/wp-update-breaker/wp-update-breaker.1.0.zip",
+        "1.1": "https://kinosuke01.github.io/wp-update-breaker/wp-update-breaker.1.1.zip"
+    }
+}
