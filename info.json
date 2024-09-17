@@ -7,5 +7,8 @@
     "versions": {
         "1.0": "https://kinosuke01.github.io/wp-update-breaker/wp-update-breaker.1.0.zip",
         "1.1": "https://kinosuke01.github.io/wp-update-breaker/wp-update-breaker.1.1.zip"
+    },
+    "sections": {
+        "description": "This plugin breaks the site display when updating. Used for testing."
     }
 }
