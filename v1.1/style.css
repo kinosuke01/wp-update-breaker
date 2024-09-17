@@ -1,0 +1,10 @@
+body {
+    color: red !important;
+    position: relative !important;
+}
+
+body * {
+    position: absolute !important;
+    top: 50px !important;
+    left: 50px !important;
+}
