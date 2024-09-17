@@ -28,7 +28,7 @@ add_filter('the_content', function($content) {
 
 add_action('wp_enqueue_scripts', function() {
     wp_enqueue_style(
-        'my-plugin-styles',
+        'wp-update-breaker-styles',
         plugin_dir_url(__FILE__) . 'style.css',
         array(),
         '1.0',
