@@ -67,17 +67,11 @@ class WP_Update_Breaker_Updater {
         // Return detailed plugin information
         return (object) [
             'name'          => $api_response['name'],
-            'slug'          => $this->plugin_slug,
+            'slug'          => $api_response['slug'],
             'version'       => $api_response['version'],
-            'author'        => 'Author Name',
-            'homepage'      => $api_response['homepage'],
-            'download_link' => $api_response['download_url'],
-            'tested'        => '5.8', // WordPress version tested up to
-            'requires'      => '5.0', // Minimum required WordPress version
-            'sections'      => [
-                'description' => 'This is a custom plugin.',
-                'changelog'   => 'Changelog information goes here.',
-            ],
+            'author'        => $api_response['author'],
+            'download_link' => $api_response['download_link'],
+            'sections'      => $api_response['sections'],
         ];
     }
 }
