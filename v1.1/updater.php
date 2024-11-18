@@ -36,7 +36,7 @@ class WP_Update_Breaker_Updater {
                 $plugin_data = [
                     'slug'        => $this->plugin_slug,
                     'new_version' => $api_response['version'],
-                    'package'     => $api_response['download_link'], // ダウンロードリンク
+                    'package'     => $api_response['download_link'], // download link
                 ];
 
                 // Add update to the transient
