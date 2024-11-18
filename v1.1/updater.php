@@ -26,20 +26,29 @@ class WP_Update_Breaker_Updater {
             return $transient;
         }
 
-        // Fetch update information
-        $response = wp_remote_get($this->api_url);
-        if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
-            $api_response = json_decode(wp_remote_retrieve_body($response), true);
+        // Check cache
+        $cache_key = 'wp_update_breaker_api_response';
+        $api_response = get_site_transient($cache_key);
 
-            // Check if there is a new version
+        if ($api_response === false) {
+            // Only request API if cache does not exist
+            $response = wp_remote_get($this->api_url);
+            if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+                $api_response = json_decode(wp_remote_retrieve_body($response), true);
+                // Save cache for 24 hours
+                set_site_transient($cache_key, $api_response, 24 * HOUR_IN_SECONDS);
+            }
+        }
+
+        // Check update information if API response is valid
+        if ($api_response) {
             if (version_compare($this->version, $api_response['version'], '<')) {
                 $plugin_data = [
                     'slug'        => $this->plugin_slug,
                     'new_version' => $api_response['version'],
-                    'package'     => $api_response['download_link'], // download link
+                    'package'     => $api_response['download_link'],
                 ];
 
-                // Add update to the transient
                 $transient->response[$this->plugin_slug . '/' . $this->plugin_slug . '.php'] = (object) $plugin_data;
             }
         }
